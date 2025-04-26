@@ -33,21 +33,7 @@ public class AlbumInvert {
         return manager;
     }
     
-    public boolean photoFound(LinkedList<Photo> list , Photo p) {
-    if (list.empty()) 
-        return false;
-    list.findFirst();
-    while (true) {
-        if (list.retrieve().path.equals(p.path))
-            return true;
-        if(!list.last())
-            list.findNext();
-        else 
-            break;
-    }
-    return false;
-    }
-
+    
     public LinkedList<Photo> AllPhoto_tag (String tag) {
        
         LinkedList<Photo> photos = new LinkedList<Photo>();
@@ -66,8 +52,7 @@ public class AlbumInvert {
     list1.findFirst();
     
     while (true) {
-        boolean found = photoFound(result, list1.retrieve());
-        if (!found){ // not found in result
+       
         list2.findFirst();    
         while (true) {
             if (list2.retrieve().path.equals(list1.retrieve().path)) {
@@ -79,7 +64,7 @@ public class AlbumInvert {
             else
                 break;
         } // end inner while for B
-        }// end if not found
+        
         if (list1.last())
             list1.findNext();
         else
